@@ -24,4 +24,33 @@ let dataset = [
   { x: 81, y: 227, method: "divide" },
 ];
 
-describe("Calculator", () => {});
+// Testing manually before writing code.
+// console.log(calculator.add(7, 10));
+// console.log(calculator.subtract(10, 2));
+// console.log(calculator.multiply(5, 5));
+// console.log(calculator.divide(5, 10));
+
+describe("Calculator", () => {
+  dataset.forEach((problem) => {
+    test(`The ${problem.method} method works with ${problem.x} and ${problem.y}.`, () => {
+      switch(problem.method) {
+        case "add":
+          expect(calculator.add(problem.x, problem.y)).toEqual(problem.x + problem.y);
+          break;
+        case "subtract":
+          expect(calculator.subtract(problem.x, problem.y)).toEqual(problem.x - problem.y);
+          break;
+        case "multiply":
+          expect(calculator.multiply(problem.x, problem.y)).toEqual(problem.x * problem.y);
+          break;
+        case "divide":
+          expect(calculator.divide(problem.x, problem.y)).toEqual(problem.x / problem.y);
+          break;
+        default:
+          console.log("Are you sure that was a math problem?")
+      }
+    })
+  })
+});
+
+
